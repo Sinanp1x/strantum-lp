@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://p1xion.app/sitemap.xml
+Sitemap: https://stratum.p1xion.app/sitemap.xml
