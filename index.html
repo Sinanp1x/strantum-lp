@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Stratum | Free Trello & Notion Alternative for Project Management</title>
+    <meta name="description" content="Stratum is a free, open-source Trello and Notion alternative for project management, with infinite nesting, next-action pins, Kanban sync, and optional end-to-end encryption." />
+    <meta name="keywords" content="free Trello alternative, free Notion alternative, open source project management system, project management system, number 1 project planning and tracking system, hierarchical project planning, Kanban board, self-hosted task manager, open source project planner" />
+    <link rel="canonical" href="https://p1xion.app/stratum" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="application-name" content="Stratum" />
+    <meta name="author" content="P1XION" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Stratum | Free Trello & Notion Alternative for Project Management" />
+    <meta property="og:description" content="A free, open-source Trello and Notion alternative with infinite nesting, next-action pins, Kanban sync, and optional end-to-end encryption." />
+    <meta property="og:image" content="assets/favicon.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stratum | Free Trello & Notion Alternative for Project Management" />
+    <meta name="twitter:description" content="A free, open-source Trello and Notion alternative with hierarchical planning, Kanban sync, and optional end-to-end encryption." />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3b82f6",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#f59e0b",
+                        "on-primary-container": "#613b00",
+                        secondary: "#a1a1aa",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#27272a",
+                        "on-secondary-container": "#a1a1aa",
+                        tertiary: "#3b82f6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#1abdff",
+                        "on-tertiary-container": "#004966",
+                        error: "#ef4444",
+                        "on-error": "#ffffff",
+                        "error-container": "#450a0a",
+                        "on-error-container": "#f87171",
+                        background: "#0a0a0a",
+                        "on-background": "#f4f4f5",
+                        surface: "#0a0a0a",
+                        "on-surface": "#f4f4f5",
+                        "on-surface-variant": "#d4d4d8",
+                        outline: "#52525b",
+                        "outline-variant": "#3f3f46",
+                        "inverse-surface": "#f4f4f5",
+                        "inverse-on-surface": "#0a0a0a",
+                        "surface-container-lowest": "#09090b",
+                        "surface-container-low": "#111111",
+                        "surface-container": "#18181b",
+                        "surface-container-high": "#27272a",
+                        "surface-container-highest": "#3f3f46"
+                    },
+                    borderRadius: {
+                        sm: "0.25rem",
+                        DEFAULT: "0.5rem",
+                        md: "0.75rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "unit-1": "0.25rem",
+                        "unit-2": "0.5rem",
+                        "unit-4": "1rem",
+                        "unit-8": "2rem",
+                        gutter: "1.5rem",
+                        "margin-mobile": "1rem",
+                        "margin-desktop": "2.5rem",
+                        base: "4px"
+                    },
+                    fontFamily: {
+                        sans: ["Geist", "Inter", "sans-serif"],
+                        mono: ["Geist Mono", "monospace"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "headline-lg": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-lg-mobile": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "code-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }]
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Stratum",
+            "alternateName": ["free Trello alternative", "free Notion alternative"],
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "A free, open-source Trello and Notion alternative for project management with infinite nesting, Kanban sync, and optional end-to-end encryption.",
+            "featureList": [
+                "Infinite hierarchical nesting",
+                "Progress rollups",
+                "Next-action pins",
+                "Tree and Kanban views",
+                "Optional end-to-end encryption"
+            ],
+            "keywords": ["free Trello alternative", "free Notion alternative", "project management system", "number 1 project planning and tracking system", "open source project planner"],
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "P1XION",
+                "url": "https://p1xion.app"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Is Stratum a free Trello alternative?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Stratum is free to use and designed as an open-source Trello alternative for hierarchical project planning and Kanban workflows."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is Stratum a Notion alternative for project management?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Stratum is also a Notion alternative for teams that want a focused project management system with nested tasks, progress rollups, and Kanban views."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I self-host Stratum?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. You can run it on your own Firebase instance or use the free public version, depending on how you want to manage data and deployment."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How is Stratum different from Trello?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Trello is centered on flat boards. Stratum adds infinite nested tasks, progress rollups, next-action pins, and a tree view for deeper planning."
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary/30 selection:text-white">
+    <header class="fixed top-0 z-50 w-full border-b border-outline-variant bg-background/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-margin-mobile py-unit-4 md:px-margin-desktop">
+            <a href="https://p1xion.app" class="flex items-center gap-unit-3">
+                <img src="assets/logo.svg" alt="Stratum logo" class="h-10 w-10 rounded-full logo-frame" />
+                <div class="leading-tight">
+                    <div class="text-headline-lg font-bold text-on-surface">Stratum</div>
+                    <div class="text-[11px] uppercase tracking-[0.28em] text-on-surface-variant">by P1XION</div>
+                </div>
+            </a>
+            <nav class="hidden items-center gap-unit-8 md:flex">
+                <a href="#features" class="text-body-md text-on-surface-variant transition hover:text-on-surface">Features</a>
+                <a href="#demos" class="text-body-md text-on-surface-variant transition hover:text-on-surface">Demos</a>
+                <a href="#privacy" class="text-body-md text-on-surface-variant transition hover:text-on-surface">Privacy</a>
+                <a href="https://p1xion.app" class="text-body-md text-on-surface-variant transition hover:text-on-surface">P1XION</a>
+            </nav>
+
+            <div class="flex items-center gap-unit-3">
+                <a href="https://app.strantum.p1xion.app" class="cta-button inline-flex items-center gap-unit-2">
+                    Open App
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-margin-mobile pt-32 pb-20 md:px-margin-desktop">
+        <section class="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="animate-fade-in-up">
+                <div class="mb-unit-6 inline-flex items-center gap-2 rounded-full border border-outline-variant bg-surface-container-low px-3 py-1 text-[12px] font-medium uppercase tracking-[0.22em] text-primary">
+                    <span class="material-symbols-outlined text-[16px]">verified</span>
+                    Free project management system
+                </div>
+                <div class="mb-4 text-[12px] font-semibold uppercase tracking-[0.24em] text-on-surface-variant">
+                    Number 1 Project Planning &amp; Tracking System
+                </div>
+                <h1 class="max-w-3xl text-display-lg leading-[1.02] tracking-tight text-on-surface md:text-[72px]">
+                    Organize complex projects the way they actually branch.
+                </h1>
+                <p class="mt-unit-8 max-w-2xl text-body-md text-on-surface-variant md:text-xl">
+                    Stratum rethinks project planning by embracing infinite hierarchical nesting. It is built for teams that want a free project management system, a Trello alternative, or a Notion alternative with unlimited subtasks, honest progress, and a Kanban board that stays in sync.
+                </p>
+                <div class="mt-unit-8 flex flex-col gap-unit-4 sm:flex-row">
+                    <a href="https://app.strantum.p1xion.app" class="cta-button inline-flex items-center justify-center gap-unit-2">
+                        Start planning free
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                    <a href="https://github.com/Sinanp1x/Stratum" class="cta-button-secondary inline-flex items-center justify-center gap-unit-2">
+                        View GitHub repo
+                        <span class="material-symbols-outlined text-[18px]">code</span>
+                    </a>
+                </div>
+
+                <div class="mt-10 grid gap-4 sm:grid-cols-3">
+                    <div class="rounded-xl border border-outline-variant bg-surface-container-low p-4">
+                        <div class="text-label-md text-on-surface-variant">Hierarchy</div>
+                        <div class="mt-2 text-headline-lg">Unlimited</div>
+                    </div>
+                    <div class="rounded-xl border border-outline-variant bg-surface-container-low p-4">
+                        <div class="text-label-md text-on-surface-variant">Progress</div>
+                        <div class="mt-2 text-headline-lg">Normalized</div>
+                    </div>
+                    <div class="rounded-xl border border-outline-variant bg-surface-container-low p-4">
+                        <div class="text-label-md text-on-surface-variant">License</div>
+                        <div class="mt-2 text-headline-lg">MIT</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-container demo-glow animate-fade-in-up" data-demo-shell>
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <div class="text-headline-lg">Live product snapshot</div>
+                        <p class="mt-2 max-w-md text-body-sm text-on-surface-variant">Watch the dashboard, tree view, and Kanban board cycle in place while the next-action sidebar highlights pinned tasks.</p>
+                    </div>
+                    <img src="assets/logo.svg" alt="Stratum mark" class="h-14 w-14 rounded-full logo-frame" />
+                </div>
+
+                <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                    <button class="demo-chip rounded-lg px-3 py-2 text-left text-body-sm text-on-surface" data-demo-tab="tree">Tree view</button>
+                    <button class="demo-chip rounded-lg px-3 py-2 text-left text-body-sm text-on-surface-variant" data-demo-tab="kanban">Kanban board</button>
+                    <button class="demo-chip rounded-lg px-3 py-2 text-left text-body-sm text-on-surface-variant" data-demo-tab="security">Next actions</button>
+                </div>
+
+                <div class="demo-swap mt-6" data-demo-panel-wrap>
+                    <div class="demo-panel is-active" data-demo-panel="tree">
+                        <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="text-headline-lg">DigiLib</div>
+                                    <div class="mt-1 text-body-sm text-on-surface-variant">Tree paths recalculate as you drag branches.</div>
+                                </div>
+                                <div class="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-label-md text-primary">76%</div>
+                            </div>
+
+                            <div class="mt-5 space-y-3">
+                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-project-card>
+                                    <div class="flex items-center justify-between gap-3">
+                                        <div>
+                                            <div class="text-label-md text-on-surface-variant">1</div>
+                                            <div class="text-body-md font-semibold">Frontend</div>
+                                        </div>
+                                        <div class="rounded-full border border-outline-variant px-2 py-1 text-[11px] text-on-surface-variant">Progress rollup</div>
+                                    </div>
+                                    <div class="mt-3 h-2 rounded-full progress-track overflow-hidden">
+                                        <div class="progress-fill h-full" data-progress-target="76"></div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-project-card>
+                                    <div class="flex items-center justify-between gap-3">
+                                        <div>
+                                            <div class="text-label-md text-on-surface-variant">1.1</div>
+                                            <div class="text-body-md font-semibold">Admin Settings Page</div>
+                                        </div>
+                                        <div class="rounded-full border border-outline-variant px-2 py-1 text-[11px] text-on-surface-variant">Todo</div>
+                                    </div>
+                                    <div class="mt-3 h-2 rounded-full progress-track overflow-hidden">
+                                        <div class="progress-fill h-full" data-progress-target="8"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-panel" data-demo-panel="kanban">
+                        <div class="grid gap-4 md:grid-cols-3">
+                            <div class="rounded-xl border border-outline-variant bg-surface-container p-4">
+                                <div class="mb-4 flex items-center justify-between text-label-md text-on-surface-variant"><span>Todo</span><span>2</span></div>
+                                <div class="space-y-3">
+                                    <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3">Admin Settings Page</div>
+                                    <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3">Edit the whole UI and correct UX</div>
+                                </div>
+                            </div>
+                            <div class="rounded-xl border border-outline-variant bg-surface-container p-4">
+                                <div class="mb-4 flex items-center justify-between text-label-md text-primary"><span>In Progress</span><span>1</span></div>
+                                <div class="space-y-3">
+                                    <div class="rounded-lg border border-primary/30 bg-primary/10 p-3 ring-1 ring-primary/20">Kanban animation prototype</div>
+                                </div>
+                            </div>
+                            <div class="rounded-xl border border-outline-variant bg-surface-container p-4">
+                                <div class="mb-4 flex items-center justify-between text-label-md text-on-surface-variant"><span>Completed</span><span>1</span></div>
+                                <div class="space-y-3">
+                                    <div class="rounded-lg border border-outline-variant/60 bg-surface-container-low p-3 text-on-surface-variant line-through">Tailwind system</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-panel" data-demo-panel="security">
+                        <div class="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+                            <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div>
+                                        <div class="text-headline-lg">Next actions</div>
+                                        <div class="mt-1 text-body-sm text-on-surface-variant">Pinned tasks from the project sidebar.</div>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary">flag</span>
+                                </div>
+                                <div class="mt-5 space-y-3" data-next-action>
+                                    <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-next-action-card>
+                                        <div class="text-label-md text-primary">Next</div>
+                                        <div class="mt-1 text-body-md font-semibold">Finish admin settings cleanup</div>
+                                    </div>
+                                    <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-next-action-card>
+                                        <div class="text-label-md text-primary">Tomorrow</div>
+                                        <div class="mt-1 text-body-md font-semibold">Review encrypted sync flow</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary">lock</span>
+                                    <div class="text-headline-lg">Security vault</div>
+                                </div>
+                                <div class="mt-4 rounded-lg border border-outline-variant bg-surface-container-low p-4">
+                                    <div class="text-label-md text-on-surface-variant">Master password</div>
+                                    <div class="mt-2 rounded-lg border border-outline-variant bg-background px-3 py-2 font-mono text-code-sm text-on-surface">••••••••••••••</div>
+                                </div>
+                                <div class="mt-4 space-y-3 text-body-sm text-on-surface-variant">
+                                    <p>Task names, project details, and comments are encrypted locally before sync.</p>
+                                    <p>Backup keys let you move devices without exposing your vault.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20">
+            <div class="mb-12">
+                <h2 class="section-title mb-unit-4">Powerful features</h2>
+                <p class="section-subtitle max-w-2xl">Everything needed to manage deep projects without flattening the work into a list of disconnected tasks.</p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2">
+                <article class="feature-card">
+                    <div class="mb-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">account_tree</span>
+                        <h3 class="text-headline-lg">Infinite hierarchical nesting</h3>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant">Each task can contain unlimited subtasks, and those subtasks can contain their own children. Stratum mirrors how complex work naturally branches.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="mb-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">trending_up</span>
+                        <h3 class="text-headline-lg">Normalized progress rollup</h3>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant">Parent tasks average child progress so your dashboard reflects real effort. A huge branch and a tiny checklist are weighted fairly.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="mb-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">flag</span>
+                        <h3 class="text-headline-lg">Next-action pins</h3>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant">Pin the next thing to do and collect every pinned task in one sidebar. It keeps you oriented when you pause work and return later.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="mb-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">view_week</span>
+                        <h3 class="text-headline-lg">Tree and Kanban views</h3>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant">Switch between structured planning and visual execution. Task status stays synced, so tree and Kanban always agree.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="mb-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">description</span>
+                        <h3 class="text-headline-lg">Notes and rich Markdown</h3>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant">Attach notes, comments, and rich Markdown to every task and turn Stratum into a lightweight decision log.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="mb-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">lock</span>
+                        <h3 class="text-headline-lg">Optional end-to-end encryption</h3>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant">Sensitive details are encrypted on your device before ever touching the server. Only you hold the master password.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="demos" class="py-20">
+            <div class="mb-12">
+                <h2 class="section-title mb-unit-4">Interactive demos</h2>
+                <p class="section-subtitle max-w-2xl">The demo shell cycles between tree, Kanban, and security views. You can also click the tabs to switch instantly.</p>
+            </div>
+
+            <div class="demo-container demo-glow" data-demo-shell>
+                <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+                    <div>
+                        <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                            <div class="flex items-center justify-between gap-3">
+                                <div>
+                                    <div class="text-label-md uppercase tracking-[0.25em] text-on-surface-variant">Current project</div>
+                                    <div class="mt-2 text-headline-lg">DigiLib</div>
+                                </div>
+                                <div class="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-label-md text-primary">0%</div>
+                            </div>
+
+                            <div class="mt-5 space-y-4">
+                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-project-card>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="text-label-md text-on-surface-variant">Root task</div>
+                                            <div class="text-body-md font-semibold">Backend</div>
+                                        </div>
+                                        <div class="text-label-md text-on-surface-variant">0%</div>
+                                    </div>
+                                    <div class="mt-3 h-2 rounded-full progress-track overflow-hidden">
+                                        <div class="progress-fill h-full" data-progress-target="0"></div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-project-card>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="text-label-md text-on-surface-variant">Next action</div>
+                                            <div class="text-body-md font-semibold">Define API boundaries</div>
+                                        </div>
+                                        <div class="rounded-full border border-primary/30 bg-primary/10 px-2 py-1 text-[11px] text-primary">Pinned</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                            <div class="flex flex-wrap gap-3">
+                                <button class="demo-chip rounded-lg px-3 py-2 text-body-sm text-on-surface" data-demo-tab="tree">Tree view</button>
+                                <button class="demo-chip rounded-lg px-3 py-2 text-body-sm text-on-surface-variant" data-demo-tab="kanban">Kanban board</button>
+                                <button class="demo-chip rounded-lg px-3 py-2 text-body-sm text-on-surface-variant" data-demo-tab="security">Security vault</button>
+                            </div>
+
+                            <div class="demo-swap mt-5">
+                                <div class="demo-panel is-active" data-demo-panel="tree">
+                                    <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="text-label-md text-on-surface-variant">1</div>
+                                                <div class="text-body-md font-semibold">Frontend</div>
+                                            </div>
+                                            <div class="rounded-full border border-outline-variant px-2 py-1 text-[11px] text-on-surface-variant">progress rollup</div>
+                                        </div>
+
+                                        <div class="mt-4 space-y-3 border-l border-outline-variant pl-5">
+                                            <div class="rounded-lg border border-outline-variant bg-surface-container p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="text-body-md">1.1 Admin Settings Page</div>
+                                                    <div class="rounded-full border border-outline-variant px-2 py-1 text-[11px] text-on-surface-variant">Todo</div>
+                                                </div>
+                                                <div class="mt-3 h-2 rounded-full progress-track overflow-hidden">
+                                                    <div class="progress-fill h-full" data-progress-target="8"></div>
+                                                </div>
+                                            </div>
+                                            <div class="rounded-lg border border-outline-variant bg-surface-container p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="text-body-md">1.1.1 Correct UX details</div>
+                                                    <div class="rounded-full border border-outline-variant px-2 py-1 text-[11px] text-on-surface-variant">Todo</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="demo-panel" data-demo-panel="kanban">
+                                    <div class="grid gap-4 md:grid-cols-3">
+                                        <div class="rounded-xl border border-outline-variant bg-surface-container p-4">
+                                            <div class="mb-4 flex items-center justify-between text-label-md text-on-surface-variant"><span>Todo</span><span>2</span></div>
+                                            <div class="space-y-3">
+                                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3">Admin Settings Page</div>
+                                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3">Edit the whole UI and correct UX</div>
+                                            </div>
+                                        </div>
+                                        <div class="rounded-xl border border-outline-variant bg-surface-container p-4">
+                                            <div class="mb-4 flex items-center justify-between text-label-md text-primary"><span>In Progress</span><span>1</span></div>
+                                            <div class="space-y-3">
+                                                <div class="rounded-lg border border-primary/30 bg-primary/10 p-3 ring-1 ring-primary/20">Kanban animation prototype</div>
+                                            </div>
+                                        </div>
+                                        <div class="rounded-xl border border-outline-variant bg-surface-container p-4">
+                                            <div class="mb-4 flex items-center justify-between text-label-md text-on-surface-variant"><span>Completed</span><span>1</span></div>
+                                            <div class="space-y-3">
+                                                <div class="rounded-lg border border-outline-variant/60 bg-surface-container-low p-3 text-on-surface-variant line-through">Tailwind system</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="demo-panel" data-demo-panel="security">
+                                    <div class="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+                                        <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                                            <div class="flex items-start justify-between gap-3">
+                                                <div>
+                                                    <div class="text-headline-lg">Next actions</div>
+                                                    <div class="mt-1 text-body-sm text-on-surface-variant">Pinned tasks from the project sidebar.</div>
+                                                </div>
+                                                <span class="material-symbols-outlined text-primary">flag</span>
+                                            </div>
+                                            <div class="mt-5 space-y-3" data-next-action>
+                                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-next-action-card>
+                                                    <div class="text-label-md text-primary">Next</div>
+                                                    <div class="mt-1 text-body-md font-semibold">Finish admin settings cleanup</div>
+                                                </div>
+                                                <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4" data-next-action-card>
+                                                    <div class="text-label-md text-primary">Tomorrow</div>
+                                                    <div class="mt-1 text-body-md font-semibold">Review encrypted sync flow</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="rounded-xl border border-outline-variant bg-surface-container p-5">
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">lock</span>
+                                                <div class="text-headline-lg">Security vault</div>
+                                            </div>
+                                            <div class="mt-4 rounded-lg border border-outline-variant bg-surface-container-low p-4">
+                                                <div class="text-label-md text-on-surface-variant">Master password</div>
+                                                <div class="mt-2 rounded-lg border border-outline-variant bg-background px-3 py-2 font-mono text-code-sm text-on-surface">••••••••••••••</div>
+                                            </div>
+                                            <div class="mt-4 space-y-3 text-body-sm text-on-surface-variant">
+                                                <p>Task names, project details, and comments are encrypted locally before sync.</p>
+                                                <p>Backup keys let you move devices without exposing your vault.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-stratum" class="py-20">
+            <div class="mb-12">
+                <h2 class="section-title mb-unit-4">Why Stratum?</h2>
+                <p class="section-subtitle max-w-2xl">Built for people who manage projects with actual depth instead of flattening everything into a single checklist.</p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-3">
+                <article class="feature-card">
+                    <span class="material-symbols-outlined mb-4 block text-3xl text-primary">layers</span>
+                    <h3 class="text-headline-lg mb-unit-2">Better structure</h3>
+                    <p class="text-body-sm text-on-surface-variant">Related work stays nested together, so goals, subgoals, and granular actions remain understandable at a glance.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="material-symbols-outlined mb-4 block text-3xl text-primary">assessment</span>
+                    <h3 class="text-headline-lg mb-unit-2">Honest progress</h3>
+                    <p class="text-body-sm text-on-surface-variant">Progress is computed from the tree itself, making rollups fair and preventing inflated percentages from hiding unfinished work.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="material-symbols-outlined mb-4 block text-3xl text-primary">security</span>
+                    <h3 class="text-headline-lg mb-unit-2">Total control</h3>
+                    <p class="text-body-sm text-on-surface-variant">MIT licensed, open source, and self-hostable on your own Firebase instance or the free public version.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="privacy" class="py-20">
+            <div class="rounded-xl border border-outline-variant bg-surface-container-high p-unit-8 md:p-margin-desktop">
+                <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-4xl text-primary">shield</span>
+                    <div>
+                        <h2 class="section-title mb-unit-4">Your privacy, protected</h2>
+                        <p class="section-subtitle max-w-3xl">
+                            Optional end-to-end encryption keeps sensitive task names, project details, and comments encrypted on your device before they touch the server. Only you hold the master password.
+                        </p>
+
+                        <div class="mt-8 grid gap-4 md:grid-cols-2">
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined mt-1 text-primary">check_circle</span>
+                                <div>
+                                    <p class="text-body-md font-semibold">Encryption on your device</p>
+                                    <p class="text-body-sm text-on-surface-variant">Nothing sensitive leaves your browser unprotected.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined mt-1 text-primary">check_circle</span>
+                                <div>
+                                    <p class="text-body-md font-semibold">Backup keys for recovery</p>
+                                    <p class="text-body-sm text-on-surface-variant">Export keys to sync across devices or restore a vault later.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined mt-1 text-primary">check_circle</span>
+                                <div>
+                                    <p class="text-body-md font-semibold">Open source and auditable</p>
+                                    <p class="text-body-sm text-on-surface-variant">The code is MIT licensed and available for review on GitHub.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined mt-1 text-primary">check_circle</span>
+                                <div>
+                                    <p class="text-body-md font-semibold">No subscriptions, no lock-in</p>
+                                    <p class="text-body-sm text-on-surface-variant">Use the free public version or run your own deployment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="rounded-xl border border-outline-variant bg-surface-container-high p-unit-8 md:p-margin-desktop">
+                <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+                    <div class="max-w-3xl">
+                        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-outline-variant bg-surface-container-low px-3 py-1 text-[12px] font-medium uppercase tracking-[0.22em] text-primary">
+                            <span class="material-symbols-outlined text-[16px]">open_source</span>
+                            Open source forever
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <img src="assets/logo.svg" alt="Stratum logo" class="h-14 w-14 rounded-full logo-frame" />
+                            <div>
+                                <h2 class="section-title">Open source, forever</h2>
+                                <p class="section-subtitle mt-4 max-w-2xl">
+                                    The entire Stratum codebase is MIT licensed and open source. Self-host on your own Firebase instance, use the free public version, or fork and customize it for your team.
+                                </p>
+
+                                <div class="mt-6 flex flex-wrap gap-3">
+                                    <div class="rounded-full border border-outline-variant bg-surface-container-low px-4 py-2 text-[12px] uppercase tracking-[0.2em] text-on-surface-variant">MIT licensed</div>
+                                    <div class="rounded-full border border-outline-variant bg-surface-container-low px-4 py-2 text-[12px] uppercase tracking-[0.2em] text-on-surface-variant">Self-hostable</div>
+                                    <div class="rounded-full border border-outline-variant bg-surface-container-low px-4 py-2 text-[12px] uppercase tracking-[0.2em] text-on-surface-variant">Fork-friendly</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-outline-variant bg-surface-container p-5 lg:w-[20rem]">
+                        <div class="space-y-3">
+                            <a href="https://github.com/Sinanp1x/Stratum" class="card-action-button">
+                                <span class="material-symbols-outlined text-[18px]">code</span>
+                                View on GitHub
+                            </a>
+                            <a href="https://p1xion.app" class="card-action-button-secondary">
+                                <span class="material-symbols-outlined text-[18px]">public</span>
+                                Visit P1XION
+                            </a>
+                        </div>
+
+                        <div class="mt-5 rounded-xl border border-outline-variant bg-surface-container-low p-4">
+                            <div class="text-label-md text-on-surface-variant">Docs status</div>
+                            <p class="mt-2 text-body-sm text-on-surface">Documentation is coming soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="rounded-xl border border-outline-variant bg-gradient-to-br from-surface-container-high via-surface-container to-surface p-unit-8 text-center md:p-margin-desktop">
+                <h2 class="section-title mb-unit-4">Ready to plan with depth?</h2>
+                <p class="section-subtitle mx-auto max-w-2xl">
+                    Start managing complex hierarchical projects today. No credit card required. No subscription. No surveillance.
+                </p>
+                <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                    <a href="https://app.strantum.p1xion.app" class="cta-button inline-flex items-center justify-center gap-2">
+                        Open the app
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                    <a href="https://p1xion.app" class="cta-button-secondary inline-flex items-center justify-center gap-2">
+                        Built by P1XION
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="mb-12">
+                <h2 class="section-title mb-unit-4">FAQ</h2>
+                <p class="section-subtitle max-w-2xl">Short answers for people comparing Stratum with Trello, Notion, and other project management systems.</p>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <article class="feature-card">
+                    <h3 class="text-headline-lg mb-unit-2">Is Stratum a free Trello alternative?</h3>
+                    <p class="text-body-sm text-on-surface-variant">Yes. Stratum is free to use and designed as an open-source Trello alternative for hierarchical project planning and Kanban workflows.</p>
+                </article>
+                <article class="feature-card">
+                    <h3 class="text-headline-lg mb-unit-2">Can I self-host Stratum?</h3>
+                    <p class="text-body-sm text-on-surface-variant">Yes. You can run it on your own Firebase instance or use the free public version, depending on how you want to manage data and deployment.</p>
+                </article>
+                <article class="feature-card">
+                    <h3 class="text-headline-lg mb-unit-2">How is Stratum different from Trello?</h3>
+                    <p class="text-body-sm text-on-surface-variant">Trello is centered on flat boards. Stratum adds infinite nested tasks, progress rollups, next-action pins, and a tree view for deeper planning.</p>
+                </article>
+                <article class="feature-card">
+                    <h3 class="text-headline-lg mb-unit-2">Is Stratum a Notion alternative?</h3>
+                    <p class="text-body-sm text-on-surface-variant">Yes. If you want a lighter project management system than Notion but still need nested tasks and board views, Stratum is designed for that workflow.</p>
+                </article>
+                <article class="feature-card">
+                    <h3 class="text-headline-lg mb-unit-2">Does Stratum support Kanban?</h3>
+                    <p class="text-body-sm text-on-surface-variant">Yes. Kanban is one of the core views, and task status stays synchronized across both the tree and board experiences.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-outline-variant bg-surface-container-high px-margin-mobile py-unit-8 md:px-margin-desktop">
+        <div class="mx-auto max-w-7xl">
+            <div class="grid gap-8 md:grid-cols-4">
+                <div>
+                    <a href="https://p1xion.app" class="mb-4 flex items-center gap-unit-3">
+                        <img src="assets/logo.svg" alt="Stratum logo" class="h-10 w-10 rounded-full logo-frame" />
+                        <div>
+                            <div class="text-body-md font-semibold text-on-surface">Stratum</div>
+                            <div class="text-[11px] uppercase tracking-[0.28em] text-on-surface-variant">P1XION startup</div>
+                        </div>
+                    </a>
+                    <p class="text-body-sm text-on-surface-variant">Hierarchical project planning for complex work.</p>
+                </div>
+
+                <div>
+                    <p class="text-label-md font-semibold mb-4">Product</p>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">Features</a></li>
+                        <li><a href="#demos" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">Demos</a></li>
+                        <li><a href="https://app.strantum.p1xion.app" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">Open App</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="text-label-md font-semibold mb-4">Developers</p>
+                    <ul class="space-y-2">
+                        <li><span class="text-body-sm text-on-surface-variant coming-soon-link">Documentation coming soon</span></li>
+                        <li><a href="https://github.com/Sinanp1x/Stratum" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">GitHub repo</a></li>
+                        <li><a href="https://p1xion.app" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">P1XION</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="text-label-md font-semibold mb-4">Company</p>
+                    <ul class="space-y-2">
+                        <li><a href="https://p1xion.app" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">Startup site</a></li>
+                        <li><a href="https://github.com/Sinanp1x/Stratum" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">Source code</a></li>
+                        <li><a href="#privacy" class="text-body-sm text-on-surface-variant transition hover:text-on-surface">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col gap-4 border-t border-outline-variant pt-8 md:flex-row md:items-center md:justify-between">
+                <p class="text-body-sm text-on-surface-variant">© 2026 P1XION. Stratum is MIT licensed and open source.</p>
+                <div class="flex flex-wrap gap-4 text-body-sm text-on-surface-variant">
+                    <a href="https://p1xion.app" class="transition hover:text-on-surface">P1XION.app</a>
+                    <a href="https://app.strantum.p1xion.app" class="transition hover:text-on-surface">app.strantum.p1xion.app</a>
+                    <a href="https://github.com/Sinanp1x/Stratum" class="transition hover:text-on-surface">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>
