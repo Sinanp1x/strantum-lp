@@ -202,6 +202,24 @@ body {
     opacity: 0.55;
 }
 
+.razorpay-payment-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+    transform: scale(1.10);
+    transform-origin: bottom right;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 768px) {
+    .razorpay-payment-button {
+        bottom: 1rem;
+        right: 1rem;
+        transform: scale(1);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
